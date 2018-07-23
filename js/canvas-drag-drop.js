@@ -1,29 +1,32 @@
 window.onload = function(){
 	var canvas = document.getElementById("canvas-drag-drop");
 	console.log("Canvas-drag-drop loaded!")
-	context = canvas.getContext("2d");//This define the renderhandle;
+	var context = canvas.getContext("2d");//This define the renderhandle;
 	console.log(context); // To check what is this context
-	//width = canvas.width = window.innerWidth;
-	//height = canvas.height = window.innerHeight;
-	width = window.innerWidth;
-	height = window.innerHeight;
+	width = canvas.width = window.innerWidth; //This two lines are very important that
+	height = canvas.height = window.innerHeight;
+	//var width = window.innerWidth;
+	//var height = window.innerHeight;
 	console.log(canvas)
-	handle = {
+	var handle = {
 		x:width / 2,
 		y:height / 2,
 		radius:20
 	};
-	offset = {};
+	var offset = {};
 
 	draw();
 
 	function draw(){
 		context.clearRect(0,0,width,height);
-
-		context.fillStyle = "blue";
+		context.fillStyle = "rgba(26, 50, 62, 1)";
+		context.strokeStyle = 'blue'
+		context.fillRect(10, 10, 100, 100);
 		context.beginPath();
-		context.arc(handle.x, handle.y, handle.radius, 0, Math.Pi*2, false);
+		context.arc(handle.x, handle.y, handle.radius, 0, 2 * Math.PI, false);
+		context.arc(100, 100, 20, 0, 2 * Math.PI, false);
 		context.fill();
+		console.log("Drawing complete!", handle, Math.PI);
 
 	}
 
